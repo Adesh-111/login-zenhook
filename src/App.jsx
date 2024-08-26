@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import axios from 'axios';
 
 function App() {
-  // app.render()
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:3000/login', { email, password });
-      if (response.data.success) {
-        alert('User added');
-      } else {
-        alert('Failed to add user');
-      }
-    } catch (error) {
-      console.error('There was an error adding the user!', error);
-    }
-  };
-
   useEffect(() => {
-    console.log(password);
+    console.log(email, password);
   }, [email, password]);
 
   function handleEmail(event) {
@@ -34,16 +17,25 @@ function App() {
     setPassword(event.target.value);
   }
 
+  function handleSubmit(event){
+    event.preventDefault();
+    axios.post('http://localhost:3000/login' , {email,password})
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    
+  }
+
+
   return (
     <>
       <div className="limiter">
         <div className="container-login100">
           <div className="wrap-login100">
             <div className="login100-pic js-tilt" data-tilt>
-              <img src="src\images\img-01.png" alt="IMG" />
+              <img src="src/images/img-01.png" alt="IMG" />
             </div>
 
-            <form className="login100-form validate-form" action="post" onSubmit={handleSubmit}>
+            <form className="login100-form validate-form" onSubmit={handleSubmit}>
               <span className="login100-form-title">Member Login</span>
 
               <div
@@ -52,11 +44,11 @@ function App() {
               >
                 <input
                   className="input100"
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="Email"
                   onChange={handleEmail}
-                  
+                  value={email}
                 />
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
@@ -71,9 +63,10 @@ function App() {
                 <input
                   className="input100"
                   type="password"
-                  name="pass"
+                  name="password"
                   placeholder="Password"
                   onChange={handlePassword}
+                  value={password}
                 />
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
@@ -82,11 +75,7 @@ function App() {
               </div>
 
               <div className="container-login100-form-btn">
-                <button className="login100-form-btn">
-                  <input
-                    type="submit"
-                    style={{ display: "none", padding: 0, margin: 0 }}
-                  />
+                <button className="login100-form-btn" type="submit">
                   Login
                 </button>
               </div>
