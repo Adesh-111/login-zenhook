@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -17,14 +17,13 @@ function App() {
     setPassword(event.target.value);
   }
 
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    axios.post('http://localhost:3000/login' , {email,password})
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-    
+    axios
+      .post("http://localhost:3000/login", { email, password })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
-
 
   return (
     <>
@@ -35,7 +34,10 @@ function App() {
               <img src="src/images/img-01.png" alt="IMG" />
             </div>
 
-            <form className="login100-form validate-form" onSubmit={handleSubmit}>
+            <form
+              className="login100-form validate-form"
+              onSubmit={handleSubmit}
+            >
               <span className="login100-form-title">Member Login</span>
 
               <div
