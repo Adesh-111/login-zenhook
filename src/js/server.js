@@ -25,7 +25,7 @@ db.connect();
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email);
+  // console.log(email);
 
   bcrypt.hash(password, saltRounds, async (err, hash) => {
     if (err) {
@@ -39,7 +39,7 @@ app.post("/login", async (req, res) => {
         "INSERT INTO login (email, password) VALUES ($1, $2)",
         [email, hash]
       );
-      console.log(email);
+      // console.log(email);
       res
         .status(201)
         .json({ success: true, message: "User added successfully" });

@@ -6,7 +6,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    console.log(email, password);
+    // console.log(email, password);
   }, [email, password]);
 
   function handleEmail(event) {
