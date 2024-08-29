@@ -1,5 +1,7 @@
 # LOGIN - ZENHOOK
 
+<img src="https://wakatime.com/badge/user/9dec8e1b-8ebe-44ff-bac3-978088f17217/project/15c43a6a-f710-4b34-8096-8cacb1cb26dd.svg" alt="">
+
 ## Project Overview
 This project was completed as part of an internship task at a startup company. The task was to implement the backend for a login form in an existing front-end project. The project uses React for the front end and Express with PostgreSQL for the backend.
 
